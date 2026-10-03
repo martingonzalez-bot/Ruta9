@@ -29,3 +29,6 @@ El archivo `data.js` contiene 57 productos reales del proyecto actual:
 
 ## Importante
 Los puntos, cambios del admin y estado del catálogo son locales al navegador para permitir una demostración autónoma. La integración real de backend, autenticación y puntos deberá conectarse posteriormente sin cambiar la experiencia visual.
+
+
+Y7 real de la demo: https://y7-club-demo-lorenzo.lvargas-juegos.chatgpt.site
