@@ -176,7 +176,7 @@
     const list = filteredClientProducts();
     return '<section class="screen menu-screen">'+clientShell('menu')+
       '<div class="menu-intro"><div><p class="eyebrow">CARTA RUTA 9</p><h2>¿Qué vas a <span>probar?</span></h2><p>Los 57 productos del proyecto, organizados con el mismo catálogo.</p></div><button class="ar-cta" data-ar="B1">Ver una experiencia AR ↗</button></div>'+
-      '<div class="y7-banner" data-route="#y7"><div><span class="y7-kicker">Y7 · EXPERIENCIA INTEGRADA</span><strong>'+esc(promos[0]?.title || defaultPromos[0].title)+'</strong><small>'+esc(promos[0]?.message || defaultPromos[0].message)+'</small></div><span class="y7-arrow">ABRIR EN Y7 →</span></div>'+
+      '<div class="y7-banner" data-open-y7><div><span class="y7-kicker">Y7 · EXPERIENCIA INTEGRADA</span><strong>'+esc(promos[0]?.title || defaultPromos[0].title)+'</strong><small>'+esc(promos[0]?.message || defaultPromos[0].message)+'</small></div><span class="y7-arrow">ABRIR EN Y7 →</span></div>'+
       '<div class="category-row">'+categoryButtons()+'</div>'+
       '<div class="search-panel"><label>Buscar por código, nombre o ingrediente</label><div class="search-line"><input id="client-search" value="'+esc(search)+'" placeholder="Ej. B12, queso azul, BBQ…"><button id="clear-search" class="clear-btn">×</button></div></div>'+
       '<div class="status-row"><span><b>'+list.length+'</b> de '+products.length+' productos visibles</span><span>● 57/57 con acceso AR demo</span></div>'+
@@ -238,6 +238,7 @@
       if (arProduct) document.getElementById('client-ar').innerHTML = renderARModal();
       if (window.__cartOpen) document.getElementById('cart-layer').innerHTML = renderCart();
     }
+    if (currentRoute==='#admin' && arProduct) document.getElementById('app').insertAdjacentHTML('beforeend', renderARModal());
   }
 
   function renderDashboardStats() {
@@ -323,6 +324,7 @@
 
   function bindGlobal() {
     document.querySelectorAll('[data-route]').forEach(b=>b.onclick=()=>setRoute(b.dataset.route));
+    document.querySelectorAll('[data-open-y7]').forEach(b=>b.onclick=()=>openY7(promos[0]?.id||'ruta9-y7-demo',''));
     document.querySelectorAll('[data-product]').forEach(b=>b.onclick=()=>{selectedProduct=products.find(p=>p.code===b.dataset.product);render();});
     document.querySelectorAll('[data-ar]').forEach(b=>b.onclick=()=>{arProduct=products.find(p=>p.code===b.dataset.ar);selectedProduct=null;arState={scale:1,rx:0,ry:0,rz:0,x:0,y:0,exploded:false,camera:false};render();});
     document.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>addToCart(b.dataset.add));
