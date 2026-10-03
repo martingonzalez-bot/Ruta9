@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ruta 9 · Admin público</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <main class="shell">
+    <header><a href="../">← Menú Ruta 9</a><span>R9 · ADMIN</span></header>
+    <section id="gate" class="panel">
+      <p class="eyebrow">ADMIN PÚBLICO</p>
+      <h1>Editar menú</h1>
+      <p>Esta página es pública y no usa inicio de sesión. La llave solo desbloquea esta interfaz del navegador.</p>
+      <label>Llave de acceso<input id="key" type="password" autocomplete="off" placeholder="Escribe tu llave"></label>
+      <button id="unlock">Entrar</button>
+      <p class="warning">Para edición real de producción, usa autenticación y permisos en backend. No guardes secretos reales en este repositorio público.</p>
+    </section>
+    <section id="editor" class="hidden">
+      <div class="toolbar"><button id="add">+ Producto</button><button id="download">Descargar data.js</button><button id="saveLocal">Guardar en este navegador</button><button id="logout">Bloquear</button></div>
+      <div id="count"></div>
+      <div id="products"></div>
+      <p class="hint">Editar aquí no cambia automáticamente el sitio publicado. Descarga <code>data.js</code> y reemplaza el archivo del proyecto, o edita el repositorio directamente.</p>
+    </section>
+  </main>
+  <script src="../data.js"></script>
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
